@@ -9,17 +9,19 @@
           <h4 id="{{ i }}" appStrikethrough>
             {{ goal.name }} due on {{ goal.completeDate | date | uppercase }}
           </h4>
-          <button (click)="toggleDetails(i)" class="btn btn-success">
+          <!-- <button (click)="toggleDetails(i)" class="btn btn-success">
             Toggle Details
-          </button>
+          </button> -->
+          <button class="btn btn-primary" (click)='goToUrl(goal.id)'>View Details</button>
+          <button class="btn btn-outline-danger" (click)='deleteGoal(i)'>Delete Goal</button>
         </div>
 
-        <div *ngIf="goal.showDescription">
+        <!-- <div *ngIf="goal.showDescription">
           <app-goal-detail
             [goal]="goal"
             (isComplete)="deleteGoal($event, i)"
           ></app-goal-detail>
-        </div>
+        </div> -->
       </div>
     </div>
     <div class="col-md-6">
@@ -28,4 +30,10 @@
   </div>
 
   <p *ngIf="goals.length > 5">You have too many goals</p>
+  <div class="row">
+    <blockquote class="blockquote text-center">
+      <p class="mb-0">{{quote.quote}}</p><br>
+      <footer class="blockquote-footer"><cite>{{quote.author}}</cite></footer>
+    </blockquote>
+  </div>
 </div>
